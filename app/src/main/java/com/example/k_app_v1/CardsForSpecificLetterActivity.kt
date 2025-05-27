@@ -1,6 +1,5 @@
 package com.example.k_app_v1
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
