@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">K-app_v1</string>
+    <string name="start_text">Hai să\n învățăm și să\n ne distrăm!</string>
+    <string name="start_button_text">Start</string>
+    <string name="mainMenu_text">MENIUL PRINCIPAL</string>
+    <string name="mate_text">Matematică</string>
+    <string name="romana_text">Limba Română</string>
+    <string name="profil_text">Profil</string>
+    <string name="progres_text">Progresul meu</string>
+    <string name="login_text">Loghează-te</string>
+    <string name="parola_text">Parola</string>
+    <string name="email_text">Email</string>
+    <string name="create_account_text">Nu ai încă un cont?</string>
+    <string name="signup_text">Înregistrează-te</string>
+    <string name="background">Background</string>
+    <string name="login_icon">LoginIcon</string>
+    <string name="titlu_mate">Pe ce te concentrezi astăzi?</string>
+    <string name="adunari_text">Adunări</string>
+    <string name="scaderi_text">Scăderi</string>
+    <string name="inmultiri_text">Înmulțiri</string>
+    <string name="impartiri_text">Împărțiri</string>
+    <string name="titlu_adunari">Cu ce numere te vei distra mai departe?</string>
+    <string name="titlu_inmultiri">Ce dificultate vei alege acum?</string>
+    <string name="titlu_operații">Care este rezultatul operației?</string>
+    <string name="adunari0">De la 0\nla 31</string>
+    <string name="adunari1">De la 0\nla 100</string>
+    <string name="adunari2">De la 0\nla 1000</string>
+    <string name="adunari3">De la 0\nla 10000</string>
+    <string name="adunari4">De la 0\nla 1000000</string>
+    <string name="verifBtn">Verifică</string>
+    <string name="hint">Introdu răspunsul</string>
+    <string name="scor">Scor: 0</string>
+    <string name="add_oper">2 + 3 =</string>
+    <string name="inm_usor">Ușor</string>
+    <string name="inm_mediu">Mediu</string>
+    <string name="inm_greu">Greu</string>
+    <string name="all_letters">LITERE</string>
+    <string name="gaseste_intrusul">GĂSEȘTE INTRUSUL</string>
+    <string name="cuvant_intrus">Ce cuvânt este intrus?</string>
+    <string name="ghiceste_contextul">GHICEȘTE CONTEXTUL</string>
+    <string name="categorie_cuvant">Din ce categorie fac parte cuvintele?</string>
+    <string name="formeaza_cuvantul">FORMEAZĂ CUVÂNTUL</string>
+    <string name="grup_litere">POTRIVEȘTE GRUPUL DE LITERE</string>
+</resources>
