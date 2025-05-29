@@ -1,11 +1,11 @@
 package com.example.k_app_v1
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import android.util.Log
 
 class ImaginiAdapter(private val imagini: List<String>) : RecyclerView.Adapter<ImaginiAdapter.ImagineViewHolder>() {
 

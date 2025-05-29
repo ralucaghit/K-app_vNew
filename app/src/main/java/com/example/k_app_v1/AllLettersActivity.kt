@@ -21,7 +21,7 @@ class AllLettersActivity : AppCompatActivity() {
 
         val grid = findViewById<GridLayout>(R.id.gridLitere)
 
-        val typeface = ResourcesCompat.getFont(this, R.font.andika)
+        val typeface = ResourcesCompat.getFont(this, R.font.averia_sans_libre)
 
         ViewCompat.setOnApplyWindowInsetsListener(grid) { view, insets ->
             val bottomInset = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
@@ -35,7 +35,7 @@ class AllLettersActivity : AppCompatActivity() {
         }
 
         //val litere = ('a'..'z').toList()
-        val litere = listOf('a', 'm', 'i', 'n', 'e', 'u', 'r', 'o', 'c', 'ă', 'l', 't', 's', 'p', 'v', 'd', 'ș', 'î', 'â', 'b', 'j', 'h', 'g', 'ț', 'z', 'f', 'x', 'k', 'q', 'w', 'y')
+        val litere = listOf('A', 'M', 'I', 'N', 'E', 'U', 'R', 'O', 'C', 'Ă', 'L', 'T', 'S', 'P', 'V', 'D', 'Ș', 'Î', 'Â', 'B', 'J', 'H', 'G', 'Ț', 'Z', 'F', 'X', 'K', 'Q', 'W', 'Y')
 
         val colors = listOf("#FFCDD0", "#F8BBD0", "#E1BEE7", "#D1C4E9", "#BBDEFB", "#B2EBF2", "#C8E6C9", "#FFF9C4", "#FFE0B2")
 
@@ -68,7 +68,7 @@ class AllLettersActivity : AppCompatActivity() {
 
                 setOnClickListener {
                     val intent = Intent(this@AllLettersActivity, CardsForSpecificLetterActivity::class.java)
-                    intent.putExtra("LiteraId", "Litera${litera.uppercase()}")
+                    intent.putExtra("LiteraId", "Litera${litera}")
                     startActivity(intent)
                 }
             }

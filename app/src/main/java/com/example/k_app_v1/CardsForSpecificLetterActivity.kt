@@ -88,6 +88,9 @@ class CardsForSpecificLetterActivity : AppCompatActivity() {
                 val rawList = doc.get("imagini")
                 val listaImagini = if (rawList is List<*>) rawList.filterIsInstance<String>() else emptyList()
 
+                val descriere = doc.getString("descriere") ?: "Fără descriere"
+                titluTextView.text = descriere
+
                 Log.d("FIREBASE_IMAGINI", "Lista conține ${listaImagini.size} imagini")
 
                 recyclerView.adapter = ImaginiAdapter(listaImagini)
