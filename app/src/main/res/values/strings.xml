@@ -34,7 +34,8 @@
     <string name="inm_usor">Ușor</string>
     <string name="inm_mediu">Mediu</string>
     <string name="inm_greu">Greu</string>
-    <string name="all_letters">LITERE</string>
+    <string name="all_letters">ABC</string>
+    <string name="missing_letter">A?C</string>
     <string name="gaseste_intrusul">GĂSEȘTE INTRUSUL</string>
     <string name="cuvant_intrus">Ce cuvânt este intrus?</string>
     <string name="ghiceste_contextul">GHICEȘTE CONTEXTUL</string>

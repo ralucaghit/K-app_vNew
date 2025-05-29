@@ -12,10 +12,16 @@ class LimbaRomanaActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_limba_romana)
 
-        val navigateButton: Button = findViewById(R.id.allLetters_btn)
+        val allLettersButton: Button = findViewById(R.id.allLetters_btn)
+        val missingLetterButton: Button = findViewById(R.id.missingLetter_btn)
 
-        navigateButton.setOnClickListener{
+        allLettersButton.setOnClickListener{
             val intent = Intent(this, AllLettersActivity::class.java)
+            startActivity(intent)
+        }
+
+        missingLetterButton.setOnClickListener{
+            val intent = Intent(this, ExMissingLetterActivity::class.java)
             startActivity(intent)
         }
     }
