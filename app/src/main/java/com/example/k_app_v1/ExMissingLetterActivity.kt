@@ -17,6 +17,8 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 
 class ExMissingLetterActivity : AppCompatActivity() {
@@ -24,6 +26,8 @@ class ExMissingLetterActivity : AppCompatActivity() {
     private lateinit var cuvantTextView: TextView
     private lateinit var gridLitere: GridLayout
     private lateinit var mesajTextView: TextView
+
+    private var categorie = 0
 
     private var exercitii = mutableListOf<Map<String, Any>>()
     private var indexCurent = 0
@@ -39,11 +43,13 @@ class ExMissingLetterActivity : AppCompatActivity() {
             insets
         }
 
-
         imagineView = findViewById(R.id.imagineView)
         cuvantTextView = findViewById(R.id.cuvantTextView)
         gridLitere = findViewById(R.id.gridLitere)
         mesajTextView = findViewById(R.id.mesajTextView)
+
+        // Preluare index categorie din Intent
+        categorie = intent.getIntExtra("Categorie", 0)
 
         incarcaExercitii()
     }
@@ -55,14 +61,38 @@ class ExMissingLetterActivity : AppCompatActivity() {
             .orderBy("index")
             .get()
             .addOnSuccessListener { result ->
+                val allExercitii = mutableListOf<Map<String, Any>>()
                 for (document in result) {
-                    exercitii.add(document.data)
+                    allExercitii.add(document.data)
                 }
+
+                var startIndex = 0
+                var endIndex = 0
+
+                // Selectăm doar setul dorit (8 exerciții per categorie)
+                if(categorie == 0 || categorie == 1 || categorie == 2 || categorie == 3 || categorie == 4 || categorie == 5 ) {
+                    startIndex = categorie * 8
+                    endIndex = minOf(startIndex + 8, allExercitii.size)
+                } else{
+                    if(categorie == 6) {
+                        startIndex = 48
+                        endIndex = 54
+                    } else {
+                        if(categorie == 7) {
+                            startIndex = 54
+                            endIndex = 61
+                        }
+                    }
+                }
+
+                exercitii = allExercitii.subList(startIndex, endIndex).toMutableList()
+
                 if (exercitii.isNotEmpty()) {
                     afiseazaExercitiu()
                 } else {
-                    Toast.makeText(this, "Nu s-au găsit exerciții.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Nu s-au găsit exerciții pentru această categorie.", Toast.LENGTH_SHORT).show()
                 }
+
             }
             .addOnFailureListener { e ->
                 Log.e("FIREBASE_ERROR", "Eroare la preluare: ${e.message}", e)
@@ -72,8 +102,10 @@ class ExMissingLetterActivity : AppCompatActivity() {
 
     private fun afiseazaExercitiu() {
         if (indexCurent >= exercitii.size) {
-            mesajTextView.text = "Felicitări!\nAi terminat toate exercițiile! 🎉"
+            mesajTextView.text = getString(R.string.mesaj_felicitari)
             gridLitere.removeAllViews()
+
+            salveazaProgres()
 
             Handler(Looper.getMainLooper()).postDelayed({
                 finish()  // Închide activitatea după 2 secunde
@@ -119,7 +151,7 @@ class ExMissingLetterActivity : AppCompatActivity() {
                     setTextColor(Color.DKGRAY)
                     typeface?.let { this.typeface = it }
 
-                    // ✅ Margin și padding pentru aspect mai frumos
+                    // Margin și padding pentru aspect mai frumos
 
                     layoutParams = GridLayout.LayoutParams().apply {
                         width = 0
@@ -141,7 +173,7 @@ class ExMissingLetterActivity : AppCompatActivity() {
 
     private fun verificaRaspuns(raspuns: String, corect: String, btn: Button) {
         if (raspuns == corect) {
-            mesajTextView.text = "Bravo! ✅"
+            mesajTextView.text = getString(R.string.mesaj_bravo)
 
             // ✅ Animatie pe buton
             val scaleX = ObjectAnimator.ofFloat(btn, "scaleX", 1f, 1.2f, 1f)
@@ -160,7 +192,32 @@ class ExMissingLetterActivity : AppCompatActivity() {
             }, 2000)
 
         } else {
-            mesajTextView.text = "Încearcă din nou! ❌"
+            mesajTextView.text = getString(R.string.mesaj_mai_incearca)
+        }
+    }
+
+    private fun salveazaProgres() {
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
+        val documentPath = "Categorie$categorie"
+        if (userId != null) {
+            val progres = hashMapOf(
+                "terminat" to true,
+                "data" to FieldValue.serverTimestamp()
+            )
+
+            FirebaseFirestore.getInstance()
+                .collection("copii")
+                .document(userId)
+                .collection("progresExercitiiLiteraLipsa")
+                .document(documentPath)
+                .set(progres)
+                .addOnSuccessListener {
+                    Log.d("FIREBASE_SAVE", "Progres salvat!")
+                }
+
+                .addOnFailureListener { e ->
+                    Log.e("FIREBASE_SAVE", "Eroare la salvarea progresului: ${e.message}", e)
+                }
         }
     }
 }

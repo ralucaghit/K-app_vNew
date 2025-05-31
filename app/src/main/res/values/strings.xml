@@ -1,45 +1,48 @@
 <resources>
     <string name="app_name">K-app_v1</string>
-    <string name="start_text">Hai să\n învățăm și să\n ne distrăm!</string>
-    <string name="start_button_text">Start</string>
-    <string name="mainMenu_text">MENIUL PRINCIPAL</string>
-    <string name="mate_text">Matematică</string>
-    <string name="romana_text">Limba Română</string>
-    <string name="profil_text">Profil</string>
-    <string name="progres_text">Progresul meu</string>
-    <string name="login_text">Loghează-te</string>
-    <string name="parola_text">Parola</string>
-    <string name="email_text">Email</string>
-    <string name="create_account_text">Nu ai încă un cont?</string>
-    <string name="signup_text">Înregistrează-te</string>
-    <string name="background">Background</string>
-    <string name="login_icon">LoginIcon</string>
-    <string name="titlu_mate">Pe ce te concentrezi astăzi?</string>
-    <string name="adunari_text">Adunări</string>
-    <string name="scaderi_text">Scăderi</string>
-    <string name="inmultiri_text">Înmulțiri</string>
-    <string name="impartiri_text">Împărțiri</string>
-    <string name="titlu_adunari">Cu ce numere te vei distra mai departe?</string>
-    <string name="titlu_inmultiri">Ce dificultate vei alege acum?</string>
-    <string name="titlu_operații">Care este rezultatul operației?</string>
-    <string name="adunari0">De la 0\nla 31</string>
-    <string name="adunari1">De la 0\nla 100</string>
-    <string name="adunari2">De la 0\nla 1000</string>
-    <string name="adunari3">De la 0\nla 10000</string>
-    <string name="adunari4">De la 0\nla 1000000</string>
-    <string name="verifBtn">Verifică</string>
-    <string name="hint">Introdu răspunsul</string>
-    <string name="scor">Scor: 0</string>
-    <string name="add_oper">2 + 3 =</string>
-    <string name="inm_usor">Ușor</string>
-    <string name="inm_mediu">Mediu</string>
-    <string name="inm_greu">Greu</string>
-    <string name="all_letters">ABC</string>
-    <string name="missing_letter">A?C</string>
-    <string name="gaseste_intrusul">GĂSEȘTE INTRUSUL</string>
-    <string name="cuvant_intrus">Ce cuvânt este intrus?</string>
-    <string name="ghiceste_contextul">GHICEȘTE CONTEXTUL</string>
-    <string name="categorie_cuvant">Din ce categorie fac parte cuvintele?</string>
-    <string name="formeaza_cuvantul">FORMEAZĂ CUVÂNTUL</string>
-    <string name="grup_litere">POTRIVEȘTE GRUPUL DE LITERE</string>
+    <string name="start_text" translatable="false">Hai să\n învățăm și să\n ne distrăm!</string>
+    <string name="start_button_text" translatable="false">Start</string>
+    <string name="mainMenu_text" translatable="false">MENIUL PRINCIPAL</string>
+    <string name="mate_text" translatable="false">Matematică</string>
+    <string name="romana_text" translatable="false">Limba Română</string>
+    <string name="profil_text" translatable="false">Profil</string>
+    <string name="progres_text" translatable="false">Progresul meu</string>
+    <string name="login_text" translatable="false">Loghează-te</string>
+    <string name="parola_text" translatable="false">Parola</string>
+    <string name="email_text" translatable="false">Email</string>
+    <string name="create_account_text" translatable="false">Nu ai încă un cont?</string>
+    <string name="signup_text" translatable="false">Înregistrează-te</string>
+    <string name="background" translatable="false">Background</string>
+    <string name="login_icon" translatable="false">LoginIcon</string>
+    <string name="titlu_mate" translatable="false">Pe ce te concentrezi astăzi?</string>
+    <string name="adunari_text" translatable="false">Adunări</string>
+    <string name="scaderi_text" translatable="false">Scăderi</string>
+    <string name="inmultiri_text" translatable="false">Înmulțiri</string>
+    <string name="impartiri_text" translatable="false">Împărțiri</string>
+    <string name="titlu_adunari" translatable="false">Cu ce numere te vei distra mai departe?</string>
+    <string name="titlu_inmultiri" translatable="false">Ce dificultate vei alege acum?</string>
+    <string name="titlu_operații" translatable="false">Care este rezultatul operației?</string>
+    <string name="adunari0" translatable="false">De la 0\nla 31</string>
+    <string name="adunari1" translatable="false">De la 0\nla 100</string>
+    <string name="adunari2" translatable="false">De la 0\nla 1000</string>
+    <string name="adunari3" translatable="false">De la 0\nla 10000</string>
+    <string name="adunari4" translatable="false">De la 0\nla 1000000</string>
+    <string name="verifBtn" translatable="false">Verifică</string>
+    <string name="hint" translatable="false">Introdu răspunsul</string>
+    <string name="scor" translatable="false">Scor: 0</string>
+    <string name="add_oper" translatable="false">2 + 3 =</string>
+    <string name="inm_usor" translatable="false">Ușor</string>
+    <string name="inm_mediu" translatable="false">Mediu</string>
+    <string name="inm_greu" translatable="false">Greu</string>
+    <string name="gaseste_intrusul" translatable="false">GĂSEȘTE INTRUSUL</string>
+    <string name="cuvant_intrus" translatable="false">Ce cuvânt este intrus?</string>
+    <string name="ghiceste_contextul" translatable="false">GHICEȘTE CONTEXTUL</string>
+    <string name="categorie_cuvant" translatable="false">Din ce categorie fac parte cuvintele?</string>
+    <string name="formeaza_cuvantul" translatable="false">FORMEAZĂ CUVÂNTUL</string>
+    <string name="grup_litere" translatable="false">POTRIVEȘTE GRUPUL DE LITERE</string>
+    <string name="all_letters" translatable="false">ABC</string>
+    <string name="missing_letter" translatable="false">A?C</string>
+    <string name="mesaj_felicitari" translatable="false">Felicitări!\nAi terminat toate exercițiile! 🎉</string>
+    <string name="mesaj_mai_incearca" translatable="false">Încearcă din nou! ❌</string>
+    <string name="mesaj_bravo" translatable="false">Bravo! ✅</string>
 </resources>

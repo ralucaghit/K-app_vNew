@@ -49,8 +49,9 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text=""
-            android:textSize="20sp"
+            android:textSize="23sp"
             android:textColor="#73B48D"
+            android:fontFamily="@font/andika"
             android:layout_marginTop="24dp" />
 
     </LinearLayout>

@@ -61,11 +61,11 @@ class CardsForSpecificLetterActivity : AppCompatActivity() {
                 FirebaseFirestore.getInstance()
                     .collection("copii")
                     .document(userId)
-                    .collection("progres")
+                    .collection("progresLitere")
                     .document(LiteraId)
                     .set(progres)
                     .addOnSuccessListener {
-                        Toast.makeText(this, "✅ Progres salvat în Firebase!", Toast.LENGTH_SHORT).show()
+                        //Toast.makeText(this, "✅ Progres salvat!", Toast.LENGTH_SHORT).show()
                         finish()
                     }
                     .addOnFailureListener { e ->

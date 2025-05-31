@@ -21,7 +21,7 @@ class LimbaRomanaActivity : AppCompatActivity() {
         }
 
         missingLetterButton.setOnClickListener{
-            val intent = Intent(this, ExMissingLetterActivity::class.java)
+            val intent = Intent(this, AllMissingLetterActivity::class.java)
             startActivity(intent)
         }
     }
