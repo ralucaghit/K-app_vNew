@@ -46,4 +46,7 @@
     <string name="titlu_missing_letter">Ce literă lipsește?</string>
     <string name="titlu_ex1_silabe">Câte silabe sunt în\ncuvântul de mai jos?</string>
     <string name="titlu_silabe2">Pune silabele în ordine</string>
+    <string name="titlu_comparare">Alege un nivel</string>
+    <string name="titlu_comparare1">Alege semnul potrivit</string>
+    <string name="titlu_comparare23">Compară numerele</string>
 </resources>

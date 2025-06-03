@@ -12,10 +12,16 @@ class MainMenuActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main_menu)
 
-        val navigateButton: Button = findViewById(R.id.romana_btn)
+        val romanaButton: Button = findViewById(R.id.romana_btn)
+        val mateButton: Button = findViewById(R.id.math_btn)
 
-        navigateButton.setOnClickListener{
+        romanaButton.setOnClickListener{
             val intent = Intent(this, LimbaRomanaActivity::class.java)
+            startActivity(intent)
+        }
+
+        mateButton.setOnClickListener{
+            val intent = Intent(this, MateActivity::class.java)
             startActivity(intent)
         }
     }

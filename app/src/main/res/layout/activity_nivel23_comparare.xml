@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:padding="10dp"
+    tools:context=".Nivel23ComparareActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textTitlu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/titlu_comparare23"
+            android:textSize="25sp"
+            android:textColor="#73B48D"
+            android:layout_marginBottom="70dp"/>
+
+        <LinearLayout
+            android:id="@+id/numereContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="70dp">
+
+            <TextView
+                android:id="@+id/numarStanga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="48sp"
+                android:textColor="#E91E63"
+                android:layout_marginEnd="30dp"/>
+
+            <TextView
+                android:id="@+id/semnText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="48sp"
+                android:textColor="#9C27B0"/>
+
+            <TextView
+                android:id="@+id/numarDreapta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="48sp"
+                android:textColor="#03A9F4"
+                android:layout_marginStart="30dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnMaiMic"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:text=""
+                android:textSize="24sp"/>
+
+            <Button
+                android:id="@+id/btnEgal"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:text=""
+                android:textSize="24sp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"/>
+
+            <Button
+                android:id="@+id/btnMaiMare"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:text=""
+                android:textSize="24sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/feedbackText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20sp"
+            android:layout_marginTop="80dp"
+            android:textColor="#73B48D"
+            android:gravity="center"/>
+    </LinearLayout>
+
+</ScrollView>

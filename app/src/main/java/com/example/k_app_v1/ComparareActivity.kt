@@ -9,30 +9,36 @@ import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class MateActivity : AppCompatActivity() {
+class ComparareActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_mate)
+        setContentView(R.layout.activity_comparare)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        val numarareButton = findViewById<CardView>(R.id.numarare_btn)
-        val comparareButton = findViewById<CardView>(R.id.comparare_btn)
-        //val adunareButton = findViewById<CardView>(R.id.adunare_btn)
-        //val scadereButton = findViewById<CardView>(R.id.scadere_btn)
+        val nivel1Button = findViewById<CardView>(R.id.incepator_btn)
+        val nivel2Button = findViewById<CardView>(R.id.mediu_btn)
+        val nivel3Button = findViewById<CardView>(R.id.expert_btn)
         val inapoiButton = findViewById<ImageButton>(R.id.backButton)
 
-        comparareButton.setOnClickListener{
-            val intent = Intent(this, ComparareActivity::class.java)
+        nivel1Button.setOnClickListener{
+            val intent = Intent(this, Nivel1ComparareActivity::class.java)
             startActivity(intent)
         }
 
-        numarareButton.setOnClickListener{
-            val intent = Intent(this, NumarareActivity::class.java)
+        nivel2Button.setOnClickListener{
+            val intent = Intent(this, Nivel23ComparareActivity::class.java)
+            intent.putExtra("nivel", "mediu")
+            startActivity(intent)
+        }
+
+        nivel3Button.setOnClickListener{
+            val intent = Intent(this, Nivel23ComparareActivity::class.java)
+            intent.putExtra("nivel", "expert")
             startActivity(intent)
         }
 
