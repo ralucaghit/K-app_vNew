@@ -6,48 +6,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".ExMissingLetterActivity">
+    tools:context=".Ex2SilabeActivity">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
         android:gravity="center">
 
         <TextView
+            android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="@string/titlu_silabe2"
             android:fontFamily="@font/andika"
-            android:text="@string/titlu_missing_letter"
-            android:textColor="#73B48D"
-            android:textSize="28sp" />
+            android:textSize="24sp"
+            android:textColor="#73B48D" />
 
         <ImageView
             android:id="@+id/imagineView"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="340dp"
             android:layout_margin="8dp" />
 
-        <TextView
-            android:id="@+id/cuvantTextView"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/slotContainer"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="22dp"
-            android:fontFamily="@font/averia_sans_libre_bold"
-            android:text="_vion"
-            android:textColor="#73B48D"
-            android:textSize="55sp" />
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="24dp" />
 
         <GridLayout
-            android:id="@+id/gridLitere"
+            android:id="@+id/silabeGrid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            android:columnCount="2"
+            android:columnCount="4"
             android:rowCount="2"
-            android:layout_gravity="center"
-            android:gravity="center" />
+            android:gravity="center"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/verificaBtn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/verifBtn"
+            android:fontFamily="@font/andika"
+            android:textSize="23sp"
+            android:layout_marginTop="20dp"/>
 
         <TextView
             android:id="@+id/mesajTextView"
@@ -59,7 +69,6 @@
             android:textColor="#73B48D"
             android:fontFamily="@font/andika"
             android:layout_marginTop="24dp" />
-
     </LinearLayout>
 
 </ScrollView>

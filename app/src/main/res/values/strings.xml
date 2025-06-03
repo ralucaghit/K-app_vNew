@@ -40,9 +40,10 @@
     <string name="categorie_cuvant" translatable="false">Din ce categorie fac parte cuvintele?</string>
     <string name="formeaza_cuvantul" translatable="false">FORMEAZĂ CUVÂNTUL</string>
     <string name="grup_litere" translatable="false">POTRIVEȘTE GRUPUL DE LITERE</string>
-    <string name="all_letters" translatable="false">ABC</string>
-    <string name="missing_letter" translatable="false">A?C</string>
     <string name="mesaj_felicitari" translatable="false">Felicitări!\nAi terminat toate exercițiile! 🎉</string>
     <string name="mesaj_mai_incearca" translatable="false">Încearcă din nou! ❌</string>
     <string name="mesaj_bravo" translatable="false">Bravo! ✅</string>
+    <string name="titlu_missing_letter">Ce literă lipsește?</string>
+    <string name="titlu_ex1_silabe">Câte silabe sunt în\ncuvântul de mai jos?</string>
+    <string name="titlu_silabe2">Pune silabele în ordine</string>
 </resources>

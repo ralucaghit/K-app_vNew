@@ -6,41 +6,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    tools:context=".ExMissingLetterActivity">
+    tools:context=".Ex1SilabeActivity">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/andika"
-            android:text="@string/titlu_missing_letter"
+            android:gravity="center"
+            android:text="@string/titlu_ex1_silabe"
             android:textColor="#73B48D"
-            android:textSize="28sp" />
+            android:textSize="23sp"
+            android:layout_marginBottom="15dp"/>
 
         <ImageView
             android:id="@+id/imagineView"
             android:layout_width="match_parent"
             android:layout_height="350dp"
-            android:layout_margin="8dp" />
+            android:layout_margin="8dp"/>
 
         <TextView
             android:id="@+id/cuvantTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
             android:layout_marginTop="22dp"
+            android:layout_marginBottom="15dp"
+            android:text=""
+            android:textSize="36sp"
             android:fontFamily="@font/averia_sans_libre_bold"
-            android:text="_vion"
             android:textColor="#73B48D"
-            android:textSize="55sp" />
+            />
 
         <GridLayout
-            android:id="@+id/gridLitere"
+            android:id="@+id/gridNumere"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
@@ -53,12 +56,12 @@
             android:id="@+id/mesajTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:text=""
             android:textSize="23sp"
+            android:gravity="center"
             android:textColor="#73B48D"
             android:fontFamily="@font/andika"
-            android:layout_marginTop="24dp" />
+            android:layout_marginTop="10dp"/>
 
     </LinearLayout>
 

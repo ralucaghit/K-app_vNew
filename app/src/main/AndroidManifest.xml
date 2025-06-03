@@ -15,6 +15,18 @@
         android:theme="@style/Theme.Kapp_v1"
         tools:targetApi="31">
         <activity
+            android:name=".MateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Ex2SilabeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Ex1SilabeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AllSilabeActivity"
+            android:exported="false" />
+        <activity
             android:name=".AllMissingLetterActivity"
             android:exported="false" />
         <activity
