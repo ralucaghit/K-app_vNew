@@ -52,4 +52,5 @@
     <string name="buton_am_terminat">Am terminat</string>
     <string name="cifre">Cifre</string>
     <string name="mesaj_gresit">Greșit! ❌</string>
+    <string name="titlu_adunare">Care este rezultatul adunării?</string>
 </resources>

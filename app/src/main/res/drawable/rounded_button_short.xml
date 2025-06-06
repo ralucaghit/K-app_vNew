@@ -2,6 +2,10 @@
 
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <solid android:color="#FFFF5F"/> <!-- Culoarea nu contează, o vom schimba din Kotlin -->
+    <solid android:color="#E2C5FD"/>
     <corners android:radius="20dp"/> <!-- Aici setezi cât de rotund vrei -->
+    <stroke
+        android:width="2dp"
+        android:color="#C081FB" /> <!-- poți pune și #FFFFFF pentru alb -->
+
 </shape>

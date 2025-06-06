@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:gravity="center"
+    tools:context=".AdunareNivel2Activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
+            android:layout_marginBottom="110dp"
+            android:fontFamily="@font/averia_sans_libre_bold"
+            android:text="@string/titlu_adunare"
+            android:textColor="#73B48D"
+            android:textSize="28sp" />
+
+
+        <!-- Zona de operatie -->
+        <LinearLayout
+            android:id="@+id/operatieLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="80dp">
+
+            <TextView
+                android:id="@+id/numar1"
+                android:fontFamily="@font/averia_sans_libre_bold"
+                android:textColor="#F041DE"
+                style="@style/OperatieBox" />
+
+            <TextView
+                android:id="@+id/plus"
+                android:fontFamily="@font/averia_sans_libre_bold"
+                android:text=""
+                android:textColor="#F88A28"
+                style="@style/OperatieBox" />
+
+            <TextView
+                android:id="@+id/numar2"
+                android:fontFamily="@font/averia_sans_libre_bold"
+                android:textColor="#FAEF29"
+                style="@style/OperatieBox" />
+
+            <TextView
+                android:id="@+id/egal"
+                android:fontFamily="@font/averia_sans_libre_bold"
+                android:text=""
+                android:textColor="#40C5B7"
+                style="@style/OperatieBox" />
+
+            <TextView
+                android:id="@+id/rezultatBox"
+                android:fontFamily="@font/averia_sans_libre_bold"
+                android:textColor="#F04141"
+                style="@style/OperatieBox" />
+        </LinearLayout>
+
+        <!-- Zona butoane de raspuns -->
+        <GridLayout
+            android:id="@+id/gridNumere"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:padding="16dp"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:layout_gravity="center"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/feedbackText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:fontFamily="@font/averia_sans_libre"
+            android:layout_marginTop="20dp"
+            android:textColor="#73B48D"/>
+
+    </LinearLayout>
+
+</ScrollView>
+
+
+

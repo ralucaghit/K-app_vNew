@@ -26,12 +26,12 @@ class AdunareActivity : AppCompatActivity() {
         val inapoiButton = findViewById<ImageButton>(R.id.backButton)
 
         nivel1Button.setOnClickListener{
-            val intent = Intent(this, Nivel1ComparareActivity::class.java)
+            val intent = Intent(this, AdunareNivel1Activity::class.java)
             startActivity(intent)
         }
 
         nivel2Button.setOnClickListener{
-            val intent = Intent(this, Nivel23ComparareActivity::class.java)
+            val intent = Intent(this, AdunareNivel2Activity::class.java)
             intent.putExtra("nivel", "mediu")
             startActivity(intent)
         }
