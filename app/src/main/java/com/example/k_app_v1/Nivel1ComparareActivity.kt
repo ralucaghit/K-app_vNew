@@ -1,10 +1,13 @@
 package com.example.k_app_v1
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -23,12 +26,6 @@ class Nivel1ComparareActivity : AppCompatActivity() {
     private lateinit var imagineStanga: ImageView
     private lateinit var imagineDreapta: ImageView
     private lateinit var textSemn: TextView
-    private lateinit var textMaiMic: TextView
-    private lateinit var textEgal: TextView
-    private lateinit var textMaiMare: TextView
-    private lateinit var buttonMaiMic: Button
-    private lateinit var buttonEgal: Button
-    private lateinit var buttonMaiMare: Button
     private lateinit var feedbackText: TextView
     private lateinit var corectSound: MediaPlayer
     private lateinit var gresitSound: MediaPlayer
@@ -50,26 +47,17 @@ class Nivel1ComparareActivity : AppCompatActivity() {
         imagineStanga = findViewById(R.id.imagineStanga)
         imagineDreapta = findViewById(R.id.imagineDreapta)
         textSemn = findViewById(R.id.textSemn)
-        textMaiMic = findViewById(R.id.textMaiMic)
-        textEgal = findViewById(R.id.textEgal)
-        textMaiMare = findViewById(R.id.textMaiMare)
-        buttonMaiMic = findViewById(R.id.buttonMaiMic)
-        buttonEgal = findViewById(R.id.buttonEgal)
-        buttonMaiMare = findViewById(R.id.buttonMaiMare)
         feedbackText = findViewById(R.id.feedbackText)
         corectSound = MediaPlayer.create(this, R.raw.corect)
         gresitSound = MediaPlayer.create(this, R.raw.gresit)
 
-        buttonMaiMic.text = "<"
-        buttonEgal.text = "="
-        buttonMaiMare.text = ">"
-        textMaiMic.text = "semnul < înseamnă mai mic decât"
-        textEgal.text = "semnul = înseamnă egal cu"
-        textMaiMare.text = "semnul > înseamnă mai mare decât"
+        imagineStanga.setOnClickListener{
+            verificaRaspuns(">")
+        }
 
-        findViewById<Button>(R.id.buttonMaiMic).setOnClickListener { verificaRaspuns("<") }
-        findViewById<Button>(R.id.buttonEgal).setOnClickListener { verificaRaspuns("=") }
-        findViewById<Button>(R.id.buttonMaiMare).setOnClickListener { verificaRaspuns(">") }
+        imagineDreapta.setOnClickListener{
+            verificaRaspuns("<")
+        }
 
         incarcaExercitii()
     }
@@ -77,8 +65,7 @@ class Nivel1ComparareActivity : AppCompatActivity() {
     private fun incarcaExercitii() {
         FirebaseFirestore.getInstance()
             .collection("Matematica").document("matematica")
-            .collection("comparare").document("incepator")
-            .collection("incepator")
+            .collection("comparare")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
@@ -119,11 +106,22 @@ class Nivel1ComparareActivity : AppCompatActivity() {
         if (raspuns == raspunsCorect) {
             corectSound.start()
             feedbackText.text = getString(R.string.mesaj_bravo)
-            textSemn.text = raspuns
+            textSemn.text = raspunsCorect
+
+            // Animatie pe text
+            val scaleX = ObjectAnimator.ofFloat(textSemn, "scaleX", 1.2f, 2f, 1.2f)
+            val scaleY = ObjectAnimator.ofFloat(textSemn, "scaleY", 1.2f, 2f, 1.2f)
+
+            val animatorSet = AnimatorSet()
+            animatorSet.playTogether(scaleX, scaleY)
+            animatorSet.duration = 600
+            animatorSet.interpolator = AccelerateDecelerateInterpolator()
+            animatorSet.start()
+
             Handler(Looper.getMainLooper()).postDelayed({
                 indexCurent++
                 afiseazaExercitiu()
-            }, 1500)
+            }, 2000)
         } else {
             gresitSound.start()
             feedbackText.text = getString(R.string.mesaj_mai_incearca)

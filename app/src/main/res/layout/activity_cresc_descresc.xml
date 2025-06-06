@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".CrescDescrescActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/instructiuneTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text=""
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/averia_sans_libre"
+            android:textColor="#EF40C6"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="120dp" />
+
+        <!-- Sloturi goale + completate -->
+        <LinearLayout
+            android:id="@+id/slotContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="60dp"
+            android:weightSum="5">
+
+            <!-- 5 sloturi vor fi generate din cod -->
+        </LinearLayout>
+
+        <!-- Butoane cu numere de tras -->
+        <LinearLayout
+            android:id="@+id/numereContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+            <!-- Butoane vor fi generate din cod -->
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/verificaBtn"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Verifică"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:backgroundTint="#9F5AE6"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="@font/andika" />
+
+        <TextView
+            android:id="@+id/rezultatTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20sp"
+            android:textColor="#4CAF50"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/andika"/>
+    </LinearLayout>
+
+</ScrollView>

@@ -1,9 +1,12 @@
 package com.example.k_app_v1
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -85,6 +88,16 @@ class Nivel23ComparareActivity : AppCompatActivity() {
             corectSound.start()
             feedbackText.text = getString(R.string.mesaj_bravo)
             semnText.text = alegere
+
+            // Animatie pe text
+            val scaleX = ObjectAnimator.ofFloat(semnText, "scaleX", 1.2f, 2f, 1.2f)
+            val scaleY = ObjectAnimator.ofFloat(semnText, "scaleY", 1.2f, 2f, 1.2f)
+
+            val animatorSet = AnimatorSet()
+            animatorSet.playTogether(scaleX, scaleY)
+            animatorSet.duration = 600
+            animatorSet.interpolator = AccelerateDecelerateInterpolator()
+            animatorSet.start()
 
             exercitiuCurent++
 

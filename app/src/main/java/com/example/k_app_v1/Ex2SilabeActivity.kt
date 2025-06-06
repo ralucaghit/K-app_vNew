@@ -213,6 +213,10 @@ class Ex2SilabeActivity : AppCompatActivity() {
 
         } else {
             gresitSound.start()
+            val shake = ObjectAnimator.ofFloat(slotContainer, "translationX", 0f, 25f, -25f, 15f, -15f, 6f, -6f, 0f)
+            shake.duration = 600
+            shake.start()
+
             mesajTextView.text = getString(R.string.mesaj_mai_incearca)
         }
     }

@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import androidx.core.graphics.toColorInt
 
 class Ex1SilabeActivity : AppCompatActivity() {
     private lateinit var imagineView: ImageView
@@ -110,10 +111,10 @@ class Ex1SilabeActivity : AppCompatActivity() {
                 gravity = Gravity.CENTER
 
                 // Asignează culoarea de pe poziția index
-                if (i < colors.size) {
-                    background = ContextCompat.getDrawable(context, R.drawable.rounded_button_background)
-                    background?.setTint(Color.parseColor(colors[i]))
-                }
+
+                background = ContextCompat.getDrawable(context, R.drawable.rounded_button_background)
+                background?.setTint(colors[i].toColorInt())
+
 
                 typeface?.let { this.typeface = it }
 
