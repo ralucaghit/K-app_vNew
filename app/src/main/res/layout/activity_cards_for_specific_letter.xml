@@ -10,6 +10,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="15dp"
+    android:background="@color/green_background"
     tools:context=".CardsForSpecificLetterActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout

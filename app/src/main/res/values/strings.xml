@@ -53,4 +53,7 @@
     <string name="cifre">Cifre</string>
     <string name="mesaj_gresit">Greșit! ❌</string>
     <string name="titlu_adunare">Care este rezultatul adunării?</string>
+    <string name="titlu_scadere">Care este rezultatul scăderii?</string>
+    <string name="titlu_adunare1">Câte elemente sunt în total?</string>
+    <string name="titlu_scaderi1">Câte elemente mai rămân în imagine, după ce scoatem respectivele?</string>
 </resources>

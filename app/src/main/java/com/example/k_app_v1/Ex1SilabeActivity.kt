@@ -171,7 +171,7 @@ class Ex1SilabeActivity : AppCompatActivity() {
                 .collection("copii")
                 .document(userId)
                 .collection("progresExercitiiSilabe1")
-                .document()
+                .document("finalizat")
                 .set(progres)
                 .addOnSuccessListener {
                     Log.d("FIREBASE_SAVE", "Progres salvat!")

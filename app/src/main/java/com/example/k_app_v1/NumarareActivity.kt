@@ -166,7 +166,7 @@ class NumarareActivity : AppCompatActivity() {
             .collection("copii")
             .document(userId)
             .collection("progresNumarare")
-            .document()
+            .document("finalizat")
             .set(progres)
             .addOnSuccessListener { Log.d("FIREBASE_SAVE", "Progres salvat!") }
             .addOnFailureListener { e -> Log.e("FIREBASE_SAVE", "Eroare salvare: ${e.message}") }

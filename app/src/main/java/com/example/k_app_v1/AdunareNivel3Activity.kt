@@ -2,33 +2,32 @@ package com.example.k_app_v1
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
-import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import android.view.Gravity
-import android.widget.*
+import android.view.inputmethod.InputMethodManager
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.graphics.toColorInt
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 
-class AdunareNivel2Activity : AppCompatActivity() {
+class AdunareNivel3Activity : AppCompatActivity() {
     private lateinit var numar1Text: TextView
     private lateinit var numar2Text: TextView
     private lateinit var plusText: TextView
     private lateinit var egalText: TextView
     private lateinit var rezultatText: TextView
-    private lateinit var butoaneGrid: GridLayout
-    private lateinit var feedbackText: TextView
+    private lateinit var raspunsEditText: EditText
+    private lateinit var verificaBtn: Button
+    private lateinit var feedbackTextView: TextView
 
     private var exercitiuCurent = 0
     private val totalExercitii = 10
@@ -41,19 +40,21 @@ class AdunareNivel2Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_adunare_nivel2)
+        setContentView(R.layout.activity_adunare_nivel3)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         numar1Text = findViewById(R.id.numar1)
         numar2Text = findViewById(R.id.numar2)
         plusText = findViewById(R.id.plus)
         egalText = findViewById(R.id.egal)
         rezultatText = findViewById(R.id.rezultatBox)
-        butoaneGrid = findViewById(R.id.gridNumere)
-        feedbackText = findViewById(R.id.feedbackText)
+        raspunsEditText = findViewById(R.id.raspunsEditText)
+        verificaBtn = findViewById(R.id.verificaBtn)
+        feedbackTextView = findViewById(R.id.feedbackTextView)
 
         plusText.text = "+"
         egalText.text = "="
@@ -61,97 +62,97 @@ class AdunareNivel2Activity : AppCompatActivity() {
         sunetCorect = MediaPlayer.create(this, R.raw.corect)
         sunetGresit = MediaPlayer.create(this, R.raw.gresit)
 
-        genereazaExercitiu()
+        genereazaOperatie()
+
+        verificaBtn.setOnClickListener {
+            ascundeTastatura()
+            verificaRaspuns()
+        }
     }
 
-    private fun genereazaExercitiu() {
+    private fun genereazaOperatie() {
         if (exercitiuCurent >= totalExercitii) {
-            feedbackText.text = "Scor final: $scor / $totalExercitii"
+            feedbackTextView.text = "Scor final: $scor / $totalExercitii"
             salveazaProgres()
             Handler(Looper.getMainLooper()).postDelayed({ finish() }, 3500)
             return
         }
-
         exercitiuCurent++
-        feedbackText.text = ""
+        feedbackTextView.text = ""
         rezultatText.text = "?"
+        raspunsEditText.text.clear()
 
-        val n1 = (0..10).random()
-        val n2 = (1..30).random()
-        raspunsCorect = n1 + n2
+        val a = (1..70).random() // Poți schimba intervalul
+        val b = (20..100).random()
+        raspunsCorect = a + b
 
-        numar1Text.text = n1.toString()
-        numar2Text.text = n2.toString()
-
-        val variante = mutableSetOf<Int>()
-        variante.add(raspunsCorect)
-        while (variante.size < 4) {
-            variante.add((0..30).random())//raspunsCorect - 5..raspunsCorect + 5).random())
-        }
-
-        val colors = listOf("#FFF9C4", "#F8BBD0", "#F8DAC5", "#B2EBF2")
-        val typeface = ResourcesCompat.getFont(this, R.font.averia_sans_libre_bold)
-
-        val varianteShuffled = variante.shuffled()
-        butoaneGrid.removeAllViews()
-
-        for ((index, varianta) in varianteShuffled.withIndex()) {
-            val btn = Button(this).apply {
-                text = varianta.toString()
-                isAllCaps = false
-                gravity = Gravity.CENTER
-                includeFontPadding = false
-                textSize = 28f
-
-                if (index < colors.size) {
-                    background = ContextCompat.getDrawable(context, R.drawable.rounded_button_background)
-                    background?.setTint(colors[index].toColorInt())
-                }
-
-                setTextColor(Color.DKGRAY)
-                typeface?.let { this.typeface = it }
-
-                layoutParams = GridLayout.LayoutParams().apply {
-                    width = 0
-                    height = 180
-                    columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
-                    setMargins(20, 24, 20, 24)
-                }
-
-                setOnClickListener {
-                    verificaRaspuns(varianta, this)
-                }
-            }
-            butoaneGrid.addView(btn)
-        }
+        numar1Text.text = a.toString()
+        numar2Text.text = b.toString()
     }
 
-    private fun verificaRaspuns(selectat: Int, btn: Button) {
-        if (selectat == raspunsCorect) {
+    private fun verificaRaspuns() {
+        val userInput = raspunsEditText.text.toString().toIntOrNull()
+        if (userInput == null) {
+            feedbackTextView.text = "Introdu un număr!"
+            return
+        }
+
+        if (userInput == raspunsCorect) {
             scor++
             rezultatText.text = raspunsCorect.toString()
-            feedbackText.text = getString(R.string.mesaj_bravo)
+            feedbackTextView.text = getString(R.string.mesaj_bravo)
             sunetCorect.start()
 
             val animatorSet = AnimatorSet()
-            val scaleX = ObjectAnimator.ofFloat(btn, "scaleX", 1f, 1.2f, 1f)
-            val scaleY = ObjectAnimator.ofFloat(btn, "scaleY", 1f, 1.2f, 1f)
+            val scaleX = ObjectAnimator.ofFloat(raspunsEditText, "scaleX", 1f, 1.2f, 1f)
+            val scaleY = ObjectAnimator.ofFloat(raspunsEditText, "scaleY", 1f, 1.2f, 1f)
             animatorSet.playTogether(scaleX, scaleY)
             animatorSet.duration = 600
             animatorSet.start()
         } else {
-            feedbackText.text = getString(R.string.mesaj_gresit)
+            feedbackTextView.text = getString(R.string.mesaj_gresit)
             sunetGresit.start()
 
 
-            val shake = ObjectAnimator.ofFloat(btn, "translationX", 0f, 25f, -25f, 15f, -15f, 6f, -6f, 0f)
+            val shake = ObjectAnimator.ofFloat(raspunsEditText, "translationX", 0f, 25f, -25f, 15f, -15f, 6f, -6f, 0f)
             shake.duration = 600
             shake.start()
         }
 
         Handler(Looper.getMainLooper()).postDelayed({
-            genereazaExercitiu()
+            genereazaOperatie()
         }, 2000)
+
+
+
+        /*
+        val esteCorect = userInput == rezultatCorect
+        feedbackTextView.text = if (esteCorect) "Corect!" else "Greșit!"
+
+        if (esteCorect) scor++
+
+        // Actualizează ? cu rezultatul
+        val tv = operatieContainer.getChildAt(4) as TextView
+        tv.text = rezultatCorect.toString()
+
+        verificaBtn.isEnabled = false
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            numarExercitiu++
+            if (numarExercitiu < totalExercitii) {
+                verificaBtn.isEnabled = true
+                genereazaOperatie()
+            } else {
+                feedbackTextView.text = "Ai terminat! Scor: $scor din $totalExercitii"
+                verificaBtn.visibility = View.GONE
+            }
+        }, 2000)
+         */
+    }
+
+    private fun ascundeTastatura() {
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(raspunsEditText.windowToken, 0)
     }
 
     private fun salveazaProgres() {
@@ -166,7 +167,7 @@ class AdunareNivel2Activity : AppCompatActivity() {
                 .collection("copii")
                 .document(userId)
                 .collection("progresAdunari")
-                .document("nivel2")
+                .document("nivel3")
                 .set(progres)
                 .addOnSuccessListener {
                     Log.d("FIREBASE_SAVE", "Progres salvat!")
@@ -183,4 +184,7 @@ class AdunareNivel2Activity : AppCompatActivity() {
         sunetCorect.release()
         sunetGresit.release()
     }
+
+    // Extensie pentru dp în pixeli
+    val Int.dp: Int get() = (this * resources.displayMetrics.density).toInt()
 }

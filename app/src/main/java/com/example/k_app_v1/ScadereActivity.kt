@@ -9,11 +9,11 @@ import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class AdunareActivity : AppCompatActivity() {
+class ScadereActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_adunare)
+        setContentView(R.layout.activity_scadere)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -26,17 +26,17 @@ class AdunareActivity : AppCompatActivity() {
         val inapoiButton = findViewById<ImageButton>(R.id.backButton)
 
         nivel1Button.setOnClickListener{
-            val intent = Intent(this, AdunareNivel1Activity::class.java)
+            val intent = Intent(this, ScadereNivel1Activity::class.java)
             startActivity(intent)
         }
 
         nivel2Button.setOnClickListener{
-            val intent = Intent(this, AdunareNivel2Activity::class.java)
+            val intent = Intent(this, ScadereNivel2Activity::class.java)
             startActivity(intent)
         }
 
         nivel3Button.setOnClickListener{
-            val intent = Intent(this, AdunareNivel3Activity::class.java)
+            val intent = Intent(this, ScadereNivel3Activity::class.java)
             startActivity(intent)
         }
 

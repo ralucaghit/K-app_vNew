@@ -25,7 +25,7 @@ class MateActivity : AppCompatActivity() {
         val crescDescrescButton = findViewById<CardView>(R.id.crescator_descrescator_btn)
         val comparareButton = findViewById<CardView>(R.id.comparare_btn)
         val adunareButton = findViewById<CardView>(R.id.adunare_btn)
-        //val scadereButton = findViewById<CardView>(R.id.scadere_btn)
+        val scadereButton = findViewById<CardView>(R.id.scadere_btn)
         val inapoiButton = findViewById<ImageButton>(R.id.backButton)
 
         invatareNumereButton.setOnClickListener{
@@ -50,6 +50,11 @@ class MateActivity : AppCompatActivity() {
 
         adunareButton.setOnClickListener{
             val intent = Intent(this, AdunareActivity::class.java)
+            startActivity(intent)
+        }
+
+        scadereButton.setOnClickListener{
+            val intent = Intent(this, ScadereActivity::class.java)
             startActivity(intent)
         }
 

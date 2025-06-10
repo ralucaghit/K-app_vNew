@@ -3,7 +3,7 @@
     <style name="Base.Theme.Kapp_v1" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/semi_dark_green</item>
-        <item name="android:windowBackground">@color/green_background</item>
+        <item name="android:windowBackground">@color/light_green_background</item>
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 

@@ -6,6 +6,7 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.Button
 import android.widget.TextView
@@ -13,6 +14,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
 
 class Nivel23ComparareActivity : AppCompatActivity() {
     private lateinit var numarSt: TextView
@@ -24,7 +28,6 @@ class Nivel23ComparareActivity : AppCompatActivity() {
     private lateinit var buttonMaiMare: Button
     private lateinit var corectSound: MediaPlayer
     private lateinit var gresitSound: MediaPlayer
-
 
     private var exercitiuCurent = 0
     private val totalExercitii = 15
@@ -64,6 +67,7 @@ class Nivel23ComparareActivity : AppCompatActivity() {
     }
 
     private fun genereazaExercitiu() {
+
         val nivel = intent.getStringExtra("nivel") ?: "mediu"
         val limitaMax = if (nivel == "expert") 100 else 30
 
@@ -119,8 +123,48 @@ class Nivel23ComparareActivity : AppCompatActivity() {
     private fun arataRezultatulFinal() {
         feedbackText.text = getString(R.string.mesaj_felicitari)
 
+        salveazaProgres()
+
         Handler(Looper.getMainLooper()).postDelayed({
             finish()
         }, 3000)
+    }
+
+    private fun salveazaProgres() {
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
+        val nivel = intent.getStringExtra("nivel") ?: "mediu"
+
+        val document: String = if(nivel == "expert"){
+            "nivel3"
+        } else {
+            "nivel2"
+        }
+
+        if (userId != null) {
+            val progres = hashMapOf(
+                "terminat" to true,
+                "data" to FieldValue.serverTimestamp()
+            )
+
+            FirebaseFirestore.getInstance()
+                .collection("copii")
+                .document(userId)
+                .collection("progresComparare")
+                .document(document)
+                .set(progres)
+                .addOnSuccessListener {
+                    Log.d("FIREBASE_SAVE", "Progres salvat!")
+                }
+
+                .addOnFailureListener { e ->
+                    Log.e("FIREBASE_SAVE", "Eroare la salvarea progresului: ${e.message}", e)
+                }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        corectSound.release()
+        gresitSound.release()
     }
 }

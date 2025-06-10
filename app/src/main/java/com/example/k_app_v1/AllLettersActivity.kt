@@ -7,11 +7,13 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.widget.Button
 import android.widget.GridLayout
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.graphics.toColorInt
 
 class AllLettersActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,22 +21,20 @@ class AllLettersActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_all_letters)
 
-        val grid = findViewById<GridLayout>(R.id.gridLitere)
-
-        val typeface = ResourcesCompat.getFont(this, R.font.averia_sans_libre)
-
-        ViewCompat.setOnApplyWindowInsetsListener(grid) { view, insets ->
-            val bottomInset = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
-            view.setPadding(
-                view.paddingLeft,
-                view.paddingTop,
-                view.paddingRight,
-                bottomInset + 82  // adaugăm un mic spațiu în plus
-            )
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        //val litere = ('a'..'z').toList()
+        val grid = findViewById<GridLayout>(R.id.gridLitere)
+        val inapoiButton = findViewById<ImageButton>(R.id.backButton)
+        val typeface = ResourcesCompat.getFont(this, R.font.averia_sans_libre)
+
+        inapoiButton.setOnClickListener{
+            finish()
+        }
+
         val litere = listOf('A', 'M', 'I', 'N', 'E', 'U', 'R', 'O', 'C', 'Ă', 'L', 'T', 'S', 'P', 'V', 'D', 'Ș', 'Î', 'Â', 'B', 'J', 'H', 'G', 'Ț', 'Z', 'F', 'X', 'K', 'Q', 'W', 'Y')
 
         val colors = listOf("#FFCDD0", "#F8BBD0", "#E1BEE7", "#D1C4E9", "#BBDEFB", "#B2EBF2", "#C8E6C9", "#FFF9C4", "#FFE0B2")
@@ -45,13 +45,12 @@ class AllLettersActivity : AppCompatActivity() {
                 setTextSize(TypedValue.COMPLEX_UNIT_SP, 68f)
 
                 background = getDrawable(R.drawable.rounded_button_background)
-                background?.setTint(Color.parseColor(colors[index % colors.size]))
+                background?.setTint(colors[index % colors.size].toColorInt())
                 setTextColor(Color.DKGRAY)
 
-                setAllCaps(false)
+                isAllCaps = false
                 gravity = Gravity.CENTER
                 includeFontPadding = false
-                setPadding(0, 0, 0, 0)
 
                 typeface?.let { this.typeface = it }
 

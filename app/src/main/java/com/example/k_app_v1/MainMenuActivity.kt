@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 
 class MainMenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,8 +13,8 @@ class MainMenuActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main_menu)
 
-        val romanaButton: Button = findViewById(R.id.romana_btn)
-        val mateButton: Button = findViewById(R.id.math_btn)
+        val romanaButton: CardView = findViewById(R.id.romana_btn)
+        val mateButton: CardView = findViewById(R.id.math_btn)
 
         romanaButton.setOnClickListener{
             val intent = Intent(this, LimbaRomanaActivity::class.java)

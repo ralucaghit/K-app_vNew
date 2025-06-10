@@ -52,7 +52,7 @@ class CardsForDigitsActivity : AppCompatActivity() {
                     .collection("copii")
                     .document(userId)
                     .collection("progresCifre")
-                    .document()
+                    .document("finalizat")
                     .set(progres)
                     .addOnSuccessListener {
                         //Toast.makeText(this, "✅ Progres salvat!", Toast.LENGTH_SHORT).show()

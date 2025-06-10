@@ -1,10 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:padding="10dp"
     tools:context=".AdunareNivel1Activity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textTitlu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="60dp"
+            android:gravity="center"
+            android:text="@string/titlu_adunare1"
+            android:textSize="28sp"
+            android:textColor="#73B48D"
+            android:fontFamily="@font/averia_sans_libre"
+            android:layout_marginBottom="50dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="50dp">
+
+            <ImageView
+                android:id="@+id/imagineStanga"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_marginRight="8dp"/>
+
+            <TextView
+                android:id="@+id/textSemn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="50sp"
+                android:textColor="#73B48D"
+                android:layout_margin="10dp"/>
+
+            <ImageView
+                android:id="@+id/imagineDreapta"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_marginLeft="8dp"/>
+        </LinearLayout>
+
+        <GridLayout
+            android:id="@+id/gridNumere"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:padding="20dp"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:layout_gravity="center"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/feedbackText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:fontFamily="@font/averia_sans_libre"
+            android:textSize="24sp"
+            android:textColor="#73B48D"
+            android:gravity="center"
+            android:layout_marginTop="24dp"/>
+    </LinearLayout>
+
+</ScrollView>

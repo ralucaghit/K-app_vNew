@@ -9,84 +9,108 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.Gravity
-import android.widget.*
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.Button
+import android.widget.GridLayout
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.toColorInt
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.graphics.toColorInt
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 
-class AdunareNivel2Activity : AppCompatActivity() {
-    private lateinit var numar1Text: TextView
-    private lateinit var numar2Text: TextView
-    private lateinit var plusText: TextView
-    private lateinit var egalText: TextView
-    private lateinit var rezultatText: TextView
+class ScadereNivel1Activity : AppCompatActivity() {
+    private lateinit var imagine: ImageView
+    private lateinit var textSemn: TextView
+    private lateinit var textNumar: TextView
+    private lateinit var egal: TextView
+    private lateinit var rezultat: TextView
     private lateinit var butoaneGrid: GridLayout
     private lateinit var feedbackText: TextView
+    private lateinit var corectSound: MediaPlayer
+    private lateinit var gresitSound: MediaPlayer
 
-    private var exercitiuCurent = 0
-    private val totalExercitii = 10
-    private var scor = 0
-    private var raspunsCorect = 0
-
-    private lateinit var sunetCorect: MediaPlayer
-    private lateinit var sunetGresit: MediaPlayer
-
+    private var raspunsCorect: Int = 0
+    private var exercitii = mutableListOf<Map<String, Any>>()
+    private var indexCurent = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_adunare_nivel2)
+        setContentView(R.layout.activity_scadere_nivel1)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        numar1Text = findViewById(R.id.numar1)
-        numar2Text = findViewById(R.id.numar2)
-        plusText = findViewById(R.id.plus)
-        egalText = findViewById(R.id.egal)
-        rezultatText = findViewById(R.id.rezultatBox)
+
+        imagine = findViewById(R.id.imagine)
+        textSemn = findViewById(R.id.textSemn)
+        textNumar = findViewById(R.id.textNumar)
+        egal = findViewById(R.id.egal)
+        rezultat = findViewById(R.id.rezultat)
         butoaneGrid = findViewById(R.id.gridNumere)
         feedbackText = findViewById(R.id.feedbackText)
+        corectSound = MediaPlayer.create(this, R.raw.corect)
+        gresitSound = MediaPlayer.create(this, R.raw.gresit)
 
-        plusText.text = "+"
-        egalText.text = "="
+        textSemn.text = "-"
+        egal.text = "="
 
-        sunetCorect = MediaPlayer.create(this, R.raw.corect)
-        sunetGresit = MediaPlayer.create(this, R.raw.gresit)
 
-        genereazaExercitiu()
+        incarcaExercitii()
     }
 
-    private fun genereazaExercitiu() {
-        if (exercitiuCurent >= totalExercitii) {
-            feedbackText.text = "Scor final: $scor / $totalExercitii"
+    private fun incarcaExercitii() {
+        FirebaseFirestore.getInstance()
+            .collection("Matematica").document("matematica")
+            .collection("scadere")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    exercitii.add(document.data)
+                }
+                exercitii.shuffle()
+                afiseazaExercitiu()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Eroare la încărcare exerciții", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun afiseazaExercitiu() {
+        if (indexCurent >= exercitii.size) {
+            feedbackText.text = getString(R.string.mesaj_felicitari)
+
             salveazaProgres()
-            Handler(Looper.getMainLooper()).postDelayed({ finish() }, 3500)
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                finish()
+            }, 2500)
             return
         }
 
-        exercitiuCurent++
+        val exercitiu = exercitii[indexCurent]
+        val imgSt = exercitiu["imagine"] as String
+        textNumar.text = exercitiu["numar"] as String
+        raspunsCorect = (exercitiu["corect"] as Long).toInt()
+
+        Glide.with(this).load(imgSt).into(imagine)
+
         feedbackText.text = ""
-        rezultatText.text = "?"
-
-        val n1 = (0..10).random()
-        val n2 = (1..30).random()
-        raspunsCorect = n1 + n2
-
-        numar1Text.text = n1.toString()
-        numar2Text.text = n2.toString()
+        rezultat.text = "?"
 
         val variante = mutableSetOf<Int>()
         variante.add(raspunsCorect)
         while (variante.size < 4) {
-            variante.add((0..30).random())//raspunsCorect - 5..raspunsCorect + 5).random())
+            variante.add((0..10).random())
         }
 
         val colors = listOf("#FFF9C4", "#F8BBD0", "#F8DAC5", "#B2EBF2")
@@ -128,30 +152,28 @@ class AdunareNivel2Activity : AppCompatActivity() {
 
     private fun verificaRaspuns(selectat: Int, btn: Button) {
         if (selectat == raspunsCorect) {
-            scor++
-            rezultatText.text = raspunsCorect.toString()
+            corectSound.start()
             feedbackText.text = getString(R.string.mesaj_bravo)
-            sunetCorect.start()
+            rezultat.text = raspunsCorect.toString()
+
+            // Animatie pe text
+            val scaleX = ObjectAnimator.ofFloat(btn, "scaleX", 1f, 1.3f, 1f)
+            val scaleY = ObjectAnimator.ofFloat(btn, "scaleY", 1f, 1.3f, 1f)
 
             val animatorSet = AnimatorSet()
-            val scaleX = ObjectAnimator.ofFloat(btn, "scaleX", 1f, 1.2f, 1f)
-            val scaleY = ObjectAnimator.ofFloat(btn, "scaleY", 1f, 1.2f, 1f)
             animatorSet.playTogether(scaleX, scaleY)
             animatorSet.duration = 600
+            animatorSet.interpolator = AccelerateDecelerateInterpolator()
             animatorSet.start()
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                indexCurent++
+                afiseazaExercitiu()
+            }, 2000)
         } else {
-            feedbackText.text = getString(R.string.mesaj_gresit)
-            sunetGresit.start()
-
-
-            val shake = ObjectAnimator.ofFloat(btn, "translationX", 0f, 25f, -25f, 15f, -15f, 6f, -6f, 0f)
-            shake.duration = 600
-            shake.start()
+            gresitSound.start()
+            feedbackText.text = getString(R.string.mesaj_mai_incearca)
         }
-
-        Handler(Looper.getMainLooper()).postDelayed({
-            genereazaExercitiu()
-        }, 2000)
     }
 
     private fun salveazaProgres() {
@@ -165,8 +187,8 @@ class AdunareNivel2Activity : AppCompatActivity() {
             FirebaseFirestore.getInstance()
                 .collection("copii")
                 .document(userId)
-                .collection("progresAdunari")
-                .document("nivel2")
+                .collection("progresScaderi")
+                .document("nivel1")
                 .set(progres)
                 .addOnSuccessListener {
                     Log.d("FIREBASE_SAVE", "Progres salvat!")
@@ -180,7 +202,7 @@ class AdunareNivel2Activity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        sunetCorect.release()
-        sunetGresit.release()
+        corectSound.release()
+        gresitSound.release()
     }
 }

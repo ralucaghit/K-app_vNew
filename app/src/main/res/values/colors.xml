@@ -3,6 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="green_background">#DAF2DF</color>
+    <color name="light_green_background">#EDFAF1</color>
     <color name="login_background">#BFEBC8</color>
     <color name="semi_dark_green">#73B48D</color>
     <color name="culoare_butoane_cresc_descresc">#E09A54</color>

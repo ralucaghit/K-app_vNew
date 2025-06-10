@@ -7,15 +7,31 @@
     android:layout_height="match_parent"
     tools:context=".AllMissingLetterActivity">
 
-    <GridLayout
-        android:id="@+id/gridChooseCat"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
-        android:columnCount="2"
-        android:padding="16dp"
-        android:layout_marginBottom="42dp"
-        android:alignmentMode="alignMargins"
-        android:useDefaultMargins="true" />
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/baseline_arrow_circle_left_24"
+            android:contentDescription="Înapoi"
+            android:padding="7dp"
+            android:layout_marginStart="10dp" />
+
+        <GridLayout
+            android:id="@+id/gridChooseCat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:alignmentMode="alignMargins"
+            android:useDefaultMargins="true" />
+
+    </LinearLayout>
 
 </ScrollView>

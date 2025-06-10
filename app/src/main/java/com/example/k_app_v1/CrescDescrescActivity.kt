@@ -47,8 +47,6 @@ class CrescDescrescActivity : AppCompatActivity() {
     private var esteCrescator = true
 
     private val colors = listOf("#FFF9C4", "#F8BBD0", "#B2EBF2")
-    private var index = 0
-    private lateinit var culoare: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,6 +99,7 @@ class CrescDescrescActivity : AppCompatActivity() {
 
         val pozitiiFixate = (0..3).shuffled().take(1).sorted()
 
+
         // Creăm sloturile
         for (i in 0..3) {
             val slot = object : androidx.appcompat.widget.AppCompatTextView(this) {
@@ -110,12 +109,14 @@ class CrescDescrescActivity : AppCompatActivity() {
                 }
             }
 
-            slot.layoutParams = LinearLayout.LayoutParams(0, 130).apply {
+            slot.layoutParams = LinearLayout.LayoutParams(110, 140).apply {
                 weight = 1f
                 marginStart = 8
                 marginEnd = 8
             }
-            slot.textSize = 22f
+            val typeface = ResourcesCompat.getFont(this, R.font.averia_sans_libre_bold)
+            slot.textSize = 25f
+            typeface?.let { slot.typeface = it }
             slot.gravity = Gravity.CENTER
             slot.setBackgroundResource(R.drawable.slot_background)
 
@@ -380,7 +381,7 @@ class CrescDescrescActivity : AppCompatActivity() {
             .collection("copii")
             .document(userId)
             .collection("progresCrescDescresc")
-            .document()
+            .document("finalizat")
             .set(progres)
             .addOnSuccessListener { Log.d("FIREBASE_SAVE", "Progres salvat!") }
             .addOnFailureListener { e -> Log.e("FIREBASE_SAVE", "Eroare salvare: ${e.message}") }

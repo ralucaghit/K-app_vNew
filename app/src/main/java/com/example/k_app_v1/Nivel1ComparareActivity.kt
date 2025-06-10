@@ -8,7 +8,6 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.animation.AccelerateDecelerateInterpolator
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -71,8 +70,11 @@ class Nivel1ComparareActivity : AppCompatActivity() {
                 for (document in result) {
                     exercitii.add(document.data)
                 }
-                exercitii.shuffle()
-                afiseazaExercitiu()
+                if (exercitii.isNotEmpty()) {
+                    afiseazaExercitiu()
+                } else {
+                    Toast.makeText(this, "Nu s-au găsit exerciții.", Toast.LENGTH_SHORT).show()
+                }
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Eroare la încărcare exerciții", Toast.LENGTH_SHORT).show()
@@ -106,7 +108,7 @@ class Nivel1ComparareActivity : AppCompatActivity() {
         if (raspuns == raspunsCorect) {
             corectSound.start()
             feedbackText.text = getString(R.string.mesaj_bravo)
-            textSemn.text = raspunsCorect
+            textSemn.text = raspuns
 
             // Animatie pe text
             val scaleX = ObjectAnimator.ofFloat(textSemn, "scaleX", 1.2f, 2f, 1.2f)
@@ -139,8 +141,8 @@ class Nivel1ComparareActivity : AppCompatActivity() {
             FirebaseFirestore.getInstance()
                 .collection("copii")
                 .document(userId)
-                .collection("progresComparare1")
-                .document()
+                .collection("progresComparare")
+                .document("nivel1")
                 .set(progres)
                 .addOnSuccessListener {
                     Log.d("FIREBASE_SAVE", "Progres salvat!")
@@ -150,5 +152,11 @@ class Nivel1ComparareActivity : AppCompatActivity() {
                     Log.e("FIREBASE_SAVE", "Eroare la salvarea progresului: ${e.message}", e)
                 }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        corectSound.release()
+        gresitSound.release()
     }
 }

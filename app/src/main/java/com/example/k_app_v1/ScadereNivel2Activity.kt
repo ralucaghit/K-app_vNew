@@ -21,10 +21,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 
-class AdunareNivel2Activity : AppCompatActivity() {
+class ScadereNivel2Activity : AppCompatActivity() {
     private lateinit var numar1Text: TextView
     private lateinit var numar2Text: TextView
-    private lateinit var plusText: TextView
+    private lateinit var minusText: TextView
     private lateinit var egalText: TextView
     private lateinit var rezultatText: TextView
     private lateinit var butoaneGrid: GridLayout
@@ -37,25 +37,25 @@ class AdunareNivel2Activity : AppCompatActivity() {
 
     private lateinit var sunetCorect: MediaPlayer
     private lateinit var sunetGresit: MediaPlayer
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_adunare_nivel2)
+        setContentView(R.layout.activity_scadere_nivel2)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         numar1Text = findViewById(R.id.numar1)
         numar2Text = findViewById(R.id.numar2)
-        plusText = findViewById(R.id.plus)
+        minusText = findViewById(R.id.minus)
         egalText = findViewById(R.id.egal)
         rezultatText = findViewById(R.id.rezultatBox)
         butoaneGrid = findViewById(R.id.gridNumere)
         feedbackText = findViewById(R.id.feedbackText)
 
-        plusText.text = "+"
+        minusText.text = "-"
         egalText.text = "="
 
         sunetCorect = MediaPlayer.create(this, R.raw.corect)
@@ -76,9 +76,9 @@ class AdunareNivel2Activity : AppCompatActivity() {
         feedbackText.text = ""
         rezultatText.text = "?"
 
-        val n1 = (0..10).random()
-        val n2 = (1..30).random()
-        raspunsCorect = n1 + n2
+        val n1 = (10..30).random()
+        val n2 = (0..10).random()
+        raspunsCorect = n1 - n2
 
         numar1Text.text = n1.toString()
         numar2Text.text = n2.toString()
@@ -165,7 +165,7 @@ class AdunareNivel2Activity : AppCompatActivity() {
             FirebaseFirestore.getInstance()
                 .collection("copii")
                 .document(userId)
-                .collection("progresAdunari")
+                .collection("progresScaderi")
                 .document("nivel2")
                 .set(progres)
                 .addOnSuccessListener {
