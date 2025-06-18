@@ -18,10 +18,8 @@ class CardsForSpecificLetterActivity : AppCompatActivity() {
     private lateinit var titluTextView: TextView
     private lateinit var recyclerView: RecyclerView
     private lateinit var terminatButton: Button
-
-    //private val firestore = FirebaseFirestore.getInstance()
-    //private val auth = FirebaseAuth.getInstance()
-    private lateinit var LiteraId: String
+    private lateinit var backButton: ImageButton
+    private lateinit var literaId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,50 +35,28 @@ class CardsForSpecificLetterActivity : AppCompatActivity() {
         titluTextView = findViewById(R.id.titluTextView)
         recyclerView = findViewById(R.id.recyclerView)
         terminatButton = findViewById(R.id.terminatButton)
+        backButton = findViewById(R.id.backButton)
 
-        val backButton: ImageButton = findViewById(R.id.backButton)
         backButton.setOnClickListener {
-            finish() // închide activitatea curentă, adică „înapoi”
+            finish()
+        }
+        terminatButton.setOnClickListener {
+            salveazaProgres()
+            finish()
         }
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         // Preluare ID litera din Intent
-        LiteraId = intent.getStringExtra("LiteraId") ?: "LiteraA"
+        literaId = intent.getStringExtra("LiteraId") ?: "LiteraA"
 
         incarcaDateLitera()
-
-        terminatButton.setOnClickListener {
-            val userId = FirebaseAuth.getInstance().currentUser?.uid
-            if (userId != null) {
-                val progres = hashMapOf(
-                    "terminat" to true,
-                    "data" to FieldValue.serverTimestamp()
-                )
-
-                FirebaseFirestore.getInstance()
-                    .collection("copii")
-                    .document(userId)
-                    .collection("progresLitere")
-                    .document(LiteraId)
-                    .set(progres)
-                    .addOnSuccessListener {
-                        //Toast.makeText(this, "✅ Progres salvat!", Toast.LENGTH_SHORT).show()
-                        finish()
-                    }
-                    .addOnFailureListener { e ->
-                        Toast.makeText(this, "❌ Eroare la salvare: ${e.message}", Toast.LENGTH_LONG).show()
-                    }
-            } else {
-                Toast.makeText(this, "Utilizatorul nu este autentificat!", Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     private fun incarcaDateLitera() {
         FirebaseFirestore.getInstance()
             .collection("LimbaRomana").document("romana")
-            .collection("litere").document(LiteraId)
+            .collection("litere").document(literaId)
             .get()
             .addOnSuccessListener { doc ->
                 Log.d("FIREBASE_STATUS", "Am primit documentul.")
@@ -91,13 +67,34 @@ class CardsForSpecificLetterActivity : AppCompatActivity() {
                 val descriere = doc.getString("descriere") ?: "Fără descriere"
                 titluTextView.text = descriere
 
-                Log.d("FIREBASE_IMAGINI", "Lista conține ${listaImagini.size} imagini")
-
                 recyclerView.adapter = ImaginiAdapter(listaImagini)
             }
             .addOnFailureListener { e ->
                 Log.e("FIREBASE_ERROR", "Eroare la preluare: ${e.message}", e)
             }
+    }
+
+    private fun salveazaProgres() {
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
+        if (userId != null) {
+            val progres = hashMapOf(
+                "terminat" to true,
+                "data" to FieldValue.serverTimestamp()
+            )
+
+            FirebaseFirestore.getInstance()
+                .collection("copii")
+                .document(userId)
+                .collection("progresLitere")
+                .document(literaId)
+                .set(progres)
+                .addOnSuccessListener {
+                    finish()
+                }
+                .addOnFailureListener { e ->
+                    Log.d("FIREBASE_SAVE", "Eroare la salvare: ${e.message}")
+                }
+        }
     }
 }
 

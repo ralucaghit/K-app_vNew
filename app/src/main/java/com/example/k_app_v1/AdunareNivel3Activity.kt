@@ -123,31 +123,6 @@ class AdunareNivel3Activity : AppCompatActivity() {
             genereazaOperatie()
         }, 2000)
 
-
-
-        /*
-        val esteCorect = userInput == rezultatCorect
-        feedbackTextView.text = if (esteCorect) "Corect!" else "Greșit!"
-
-        if (esteCorect) scor++
-
-        // Actualizează ? cu rezultatul
-        val tv = operatieContainer.getChildAt(4) as TextView
-        tv.text = rezultatCorect.toString()
-
-        verificaBtn.isEnabled = false
-
-        Handler(Looper.getMainLooper()).postDelayed({
-            numarExercitiu++
-            if (numarExercitiu < totalExercitii) {
-                verificaBtn.isEnabled = true
-                genereazaOperatie()
-            } else {
-                feedbackTextView.text = "Ai terminat! Scor: $scor din $totalExercitii"
-                verificaBtn.visibility = View.GONE
-            }
-        }, 2000)
-         */
     }
 
     private fun ascundeTastatura() {

@@ -56,6 +56,13 @@
                     android:layout_height="180dp"
                     android:src="@drawable/background_button_nivel1"
                     />
+
+                <EditText
+                    android:id="@+id/editTextTextPostalAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPostalAddress" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
