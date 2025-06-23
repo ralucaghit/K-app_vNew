@@ -1,5 +1,6 @@
 package com.example.k_app_v1
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
@@ -42,6 +43,7 @@ class ProgresActivity : AppCompatActivity() {
         citesteProgresDinFirestore()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun citesteProgresDinFirestore() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
 
@@ -82,8 +84,7 @@ class ProgresActivity : AppCompatActivity() {
         for ((nume, numeColectie, imagineResursa) in listaExercitiiStatic) {
             db.collection("copii").document(userId)
                 .collection(numeColectie)
-                .get()
-                .addOnSuccessListener { snapshot ->
+                .get().addOnSuccessListener { snapshot ->
                     var procent = 0
 
                     // Dacă există document "finalizat", progresul e 100%
@@ -100,17 +101,15 @@ class ProgresActivity : AppCompatActivity() {
                     listaExercitii.add(ProgresExercitiu(nume, procent, imagineResursa))
 
                     numarExercitiiCitite++
-                    if (numarExercitiiCitite == listaExercitiiStatic.size) {
+                    if (numarExercitiiCitite == listaExercitiiStatic.size)
                         adapter.notifyDataSetChanged()
-                    }
                 }
                 .addOnFailureListener {
-                    // Adaugă progres 0 și la eroare, ca să nu blochezi afișarea
+                    // Adauga progres 0 si la eroare, ca sa nu blocheze afișarea
                     listaExercitii.add(ProgresExercitiu(nume, 0, imagineResursa))
                     numarExercitiiCitite++
-                    if (numarExercitiiCitite == listaExercitiiStatic.size) {
+                    if (numarExercitiiCitite == listaExercitiiStatic.size)
                         adapter.notifyDataSetChanged()
-                    }
                 }
         }
     }

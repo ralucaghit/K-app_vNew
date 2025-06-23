@@ -79,45 +79,4 @@ class LoginActivity : AppCompatActivity() {
         finish() // opțional, ca să nu poată reveni cu back
     }
 
-        /*override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            enableEdgeToEdge()
-            setContentView(R.layout.activity_login)
-
-            val scrollView = findViewById<androidx.core.widget.NestedScrollView>(R.id.main)
-            val usernameInput = findViewById<EditText>(R.id.username_input)
-            val passwordInput = findViewById<EditText>(R.id.password_input)
-
-            usernameInput.setOnFocusChangeListener { _, hasFocus ->
-                if (hasFocus) scrollView.scrollTo(0, usernameInput.bottom)
-            }
-
-            passwordInput.setOnFocusChangeListener { _, hasFocus ->
-                if (hasFocus) scrollView.scrollTo(0, passwordInput.bottom)
-            }
-        }
-
-        fun clicked (view: View) {
-            // get views
-            val eUser = findViewById<EditText>(R.id.username_input)
-            val ePass = findViewById<EditText>(R.id.password_input)
-
-            // Obține textul și elimină spațiile goale
-            val user = eUser.text.toString().trim()
-            val pass = ePass.text.toString().trim()
-
-            // verify that both fields are filled
-            if (user.isEmpty() || pass.isEmpty()) {
-                Toast.makeText(this, "Vă rog introduceți atât numele de utilizator, cât și parola!", Toast.LENGTH_LONG).show()
-                return
-            }
-            doLogin(user, pass);
-        }
-
-        private fun doLogin(user: String, pass: String) {
-            val intent = Intent(this, MainMenuActivity::class.java)
-            intent.putExtra("username", user)
-            intent.putExtra("password", pass)
-            startActivity(intent)
-        }*/
 }

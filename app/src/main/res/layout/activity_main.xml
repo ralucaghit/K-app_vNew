@@ -10,33 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/k_app_design_v4"
+        android:src="@drawable/k_app_design_v6"
         android:contentDescription="@string/background"
         />
-
-    <TextView
-        android:id="@+id/centerText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:translationY="35dp"
-        android:padding="20dp"
-        android:gravity="center"
-        android:text="@string/start_text"
-        android:textColor="#73B48D"
-        android:textSize="35sp"
-        android:fontFamily="@font/bungee"
-        android:lineSpacingExtra="38dp"
-        android:letterSpacing="0.04"/>
 
     <Button
         android:id="@+id/navigateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/centerText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
         android:text="@string/start_button_text"
         android:fontFamily="@font/andika"
         android:textSize="17sp"

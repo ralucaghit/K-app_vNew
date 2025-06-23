@@ -50,6 +50,7 @@ class ExMissingLetterActivity : AppCompatActivity() {
         cuvantTextView = findViewById(R.id.cuvantTextView)
         gridLitere = findViewById(R.id.gridLitere)
         mesajTextView = findViewById(R.id.mesajTextView)
+
         corectSound = MediaPlayer.create(this, R.raw.corect)
         gresitSound = MediaPlayer.create(this, R.raw.gresit)
 

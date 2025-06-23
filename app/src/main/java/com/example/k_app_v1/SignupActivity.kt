@@ -30,12 +30,10 @@ class SignupActivity : AppCompatActivity() {
         // Inițializare FirebaseAuth
         auth = FirebaseAuth.getInstance()
 
-        // Legătura cu elementele din layout
         email = findViewById(R.id.etEmail)
         password = findViewById(R.id.etPassword)
         registerButton = findViewById(R.id.btnRegister)
 
-        // Setăm click listener pentru butonul de înregistrare
         registerButton.setOnClickListener {
             registerUser()
         }
@@ -52,19 +50,17 @@ class SignupActivity : AppCompatActivity() {
             return
         }
 
-        // Înregistrare utilizator în Firebase
+
         auth.createUserWithEmailAndPassword(userEmail, userPassword)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Înregistrare reușită
                     val user: FirebaseUser? = auth.currentUser
                     Toast.makeText(this, "Registration successful: ${user?.email}", Toast.LENGTH_SHORT).show()
-                    // Poți adăuga aici logica pentru a trimite utilizatorul pe altă activitate
+
                     val intent = Intent(this, MainMenuActivity::class.java)
                     startActivity(intent)
-                    finish() // opțional, ca să nu poată reveni cu back
+                    finish()
                 } else {
-                    // Dacă a apărut o eroare
                     Toast.makeText(this, "Registration failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }

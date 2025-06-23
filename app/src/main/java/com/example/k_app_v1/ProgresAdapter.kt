@@ -22,7 +22,6 @@ class ProgresAdapter(private val listaExercitii: List<ProgresExercitiu>) : Recyc
 
     override fun onBindViewHolder(holder: ExercitiuViewHolder, position: Int) {
         val exercitiu = listaExercitii[position]
-        // Pune aici resursa imaginei, de exemplu: R.drawable.adunare
         holder.image.setImageResource(exercitiu.imagineResursa)
         holder.progresText.text = "${exercitiu.procent}%"
     }

@@ -28,7 +28,7 @@ class BubbleView @JvmOverloads constructor(
     )
 
     private val bubbles = mutableListOf<Bubble>()
-    private val numBubbles = 28
+    private val numBubbles = 30
     private val popDuration = 350L // ms
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
