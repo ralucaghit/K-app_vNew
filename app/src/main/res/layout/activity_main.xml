@@ -14,15 +14,4 @@
         android:contentDescription="@string/background"
         />
 
-    <Button
-        android:id="@+id/navigateButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/start_button_text"
-        android:fontFamily="@font/andika"
-        android:textSize="17sp"
-        android:backgroundTint="#73B48D"
-        android:textColor="#FFFFFF"/>
-
 </RelativeLayout>
