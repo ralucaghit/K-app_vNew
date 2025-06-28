@@ -11,7 +11,7 @@ Smart Kids este o aplicație Android dezvoltată în Kotlin, care oferă exerci�
 ## Repository
 
 Adresa repository-ului (GitHub):  
-
+https://github.com/ralucaghit/SmartKids_Aplicatie_de_e-learning_pentru_copii.git
 
 ---
 
