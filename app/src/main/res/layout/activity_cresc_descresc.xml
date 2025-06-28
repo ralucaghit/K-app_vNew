@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    android:background="@drawable/background_exercitii"
     tools:context=".CrescDescrescActivity">
 
     <LinearLayout
@@ -24,7 +25,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             android:fontFamily="@font/averia_sans_libre"
-            android:textColor="#EF40C6"
+            android:textColor="@color/portocaliu_tema"
             android:layout_marginTop="50dp"
             android:layout_marginBottom="120dp" />
 
@@ -63,7 +64,7 @@
             android:text="Verifică"
             android:textSize="20sp"
             android:textColor="#fff"
-            android:backgroundTint="#9F5AE6"
+            android:backgroundTint="@color/galben_tema"
             android:layout_marginTop="50dp"
             android:layout_marginBottom="50dp"
             android:fontFamily="@font/andika" />

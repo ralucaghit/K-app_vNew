@@ -7,4 +7,7 @@
     <color name="login_background">#BFEBC8</color>
     <color name="semi_dark_green">#73B48D</color>
     <color name="culoare_butoane_cresc_descresc">#E09A54</color>
+    <color name="portocaliu_tema">#F79425</color>
+    <color name="albastru_tema">#08BFAD</color>
+    <color name="galben_tema">#FFD400</color>
 </resources>

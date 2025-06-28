@@ -9,11 +9,12 @@
     android:fitsSystemWindows="true"
     android:windowSoftInputMode="adjustResize"
     android:gravity="center"
+    android:background="@drawable/background_exercitii"
     tools:context=".AdunareNivel3Activity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="8dp"
         android:layout_gravity="center">
@@ -24,8 +25,9 @@
             android:gravity="center"
             android:padding="60dp"
             android:layout_marginBottom="100dp"
-            android:fontFamily="@font/averia_sans_libre_bold"
+            android:fontFamily="@font/averia_sans_libre"
             android:text="@string/titlu_adunare"
+            android:textStyle="bold"
             android:textColor="#73B48D"
             android:textSize="28sp" />
 
@@ -42,33 +44,33 @@
             <TextView
                 android:id="@+id/numar1"
                 android:fontFamily="@font/averia_sans_libre_bold"
-                android:textColor="#F041DE"
+                android:textColor="@color/albastru_tema"
                 style="@style/OperatieBox" />
 
             <TextView
                 android:id="@+id/plus"
                 android:fontFamily="@font/averia_sans_libre_bold"
                 android:text=""
-                android:textColor="#F88A28"
+                android:textColor="@color/portocaliu_tema"
                 style="@style/OperatieBox" />
 
             <TextView
                 android:id="@+id/numar2"
                 android:fontFamily="@font/averia_sans_libre_bold"
-                android:textColor="#FAEF29"
+                android:textColor="@color/albastru_tema"
                 style="@style/OperatieBox" />
 
             <TextView
                 android:id="@+id/egal"
                 android:fontFamily="@font/averia_sans_libre_bold"
                 android:text=""
-                android:textColor="#40C5B7"
+                android:textColor="@color/portocaliu_tema"
                 style="@style/OperatieBox" />
 
             <TextView
                 android:id="@+id/rezultatBox"
                 android:fontFamily="@font/averia_sans_libre_bold"
-                android:textColor="#F04141"
+                android:textColor="@color/albastru_tema"
                 style="@style/OperatieBox" />
         </LinearLayout>
 
@@ -96,7 +98,7 @@
             android:fontFamily="@font/averia_sans_libre"
             android:textSize="22sp"
             android:padding="9dp"
-            android:backgroundTint="#D16941"
+            android:backgroundTint="@color/albastru_tema"
             android:textColor="#FFFFFF" />
 
         <TextView

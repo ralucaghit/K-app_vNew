@@ -24,6 +24,9 @@ class AllSilabeActivity : AppCompatActivity() {
         val asociereSilabeButton = findViewById<CardView>(R.id.ascociere_silabe_btn)
         val inapoiButton = findViewById<ImageButton>(R.id.backButton)
 
+        numarSilabeButton.addPressEffect()
+        asociereSilabeButton.addPressEffect()
+
         numarSilabeButton.setOnClickListener{
             val intent = Intent(this, Ex1SilabeActivity::class.java)
             startActivity(intent)

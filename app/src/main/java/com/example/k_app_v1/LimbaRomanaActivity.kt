@@ -18,6 +18,10 @@ class LimbaRomanaActivity : AppCompatActivity() {
         val silabeButton = findViewById<CardView>(R.id.silabe_btn)
         val inapoiButton = findViewById<ImageButton>(R.id.backButton)
 
+        allLettersButton.addPressEffect()
+        missingLetterButton.addPressEffect()
+        silabeButton.addPressEffect()
+
         allLettersButton.setOnClickListener{
             val intent = Intent(this, AllLettersActivity::class.java)
             startActivity(intent)

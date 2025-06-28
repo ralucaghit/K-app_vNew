@@ -25,6 +25,10 @@ class ComparareActivity : AppCompatActivity() {
         val nivel3Button = findViewById<CardView>(R.id.expert_btn)
         val inapoiButton = findViewById<ImageButton>(R.id.backButton)
 
+        nivel1Button.addPressEffect()
+        nivel2Button.addPressEffect()
+        nivel3Button.addPressEffect()
+
         nivel1Button.setOnClickListener{
             val intent = Intent(this, Nivel1ComparareActivity::class.java)
             startActivity(intent)

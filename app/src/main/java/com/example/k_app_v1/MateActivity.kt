@@ -28,6 +28,13 @@ class MateActivity : AppCompatActivity() {
         val scadereButton = findViewById<CardView>(R.id.scadere_btn)
         val inapoiButton = findViewById<ImageButton>(R.id.backButton)
 
+        invatareNumereButton.addPressEffect()
+        numarareButton.addPressEffect()
+        crescDescrescButton.addPressEffect()
+        comparareButton.addPressEffect()
+        adunareButton.addPressEffect()
+        scadereButton.addPressEffect()
+
         invatareNumereButton.setOnClickListener{
             val intent = Intent(this, CardsForDigitsActivity::class.java)
             startActivity(intent)

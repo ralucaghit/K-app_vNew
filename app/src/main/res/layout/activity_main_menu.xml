@@ -5,25 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_meniul_principal"
     tools:context=".MainMenuActivity">
-
-    <com.example.k_app_v1.BubbleView
-        android:id="@+id/bubbleView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/tourney"
-        android:layout_marginTop="28dp"
-        android:gravity="center"
-        android:layout_centerHorizontal="true"
-        android:padding="5dp"
-        android:text="@string/mainMenu_text"
-        android:textColor="#73B48D"
-        android:background="@color/light_green_background"
-        android:textSize="27sp" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -36,32 +19,32 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/romana_btn"
-            android:layout_width="220dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="15dp"
+            android:layout_width="270dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="50dp"
             android:layout_marginBottom="30dp"
-            app:cardCornerRadius="50dp"
+            app:cardCornerRadius="30dp"
             app:cardElevation="2dp">
 
             <ImageView
-                android:layout_width="270dp"
-                android:layout_height="185dp"
+                android:layout_width="300dp"
+                android:layout_height="195dp"
                 android:layout_gravity="center"
                 android:src="@drawable/background_button_romana" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/math_btn"
-            android:layout_width="280dp"
-            android:layout_height="100dp"
+            android:layout_width="290dp"
+            android:layout_height="133dp"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="30dp"
-            app:cardCornerRadius="50dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="30dp"
             app:cardElevation="2dp">
 
             <ImageView
-                android:layout_width="280dp"
-                android:layout_height="200dp"
+                android:layout_width="300dp"
+                android:layout_height="210dp"
                 android:layout_gravity="center"
                 android:src="@drawable/background_button_mate" />
         </androidx.cardview.widget.CardView>
@@ -74,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="780dp"
         android:layout_marginLeft="210dp"
+        android:backgroundTint="#73B48D"
         android:fontFamily="@font/bungee"
         android:text="@string/progres_text" />
 

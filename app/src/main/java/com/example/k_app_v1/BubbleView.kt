@@ -28,7 +28,7 @@ class BubbleView @JvmOverloads constructor(
     )
 
     private val bubbles = mutableListOf<Bubble>()
-    private val numBubbles = 30
+    private val numBubbles = 40
     private val popDuration = 350L // ms
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -40,7 +40,7 @@ class BubbleView @JvmOverloads constructor(
     }
 
     private fun createBubble(viewWidth: Int, viewHeight: Int): Bubble {
-        val baseRadius = Random.nextFloat() * 60 + 110  // 110 - 190 px
+        val baseRadius = Random.nextFloat() * 60 + 90  // 90 - 150 px
         val x = Random.nextFloat() * (viewWidth - 2 * baseRadius) + baseRadius
         val y = Random.nextFloat() * (viewHeight - 2 * baseRadius) + baseRadius
         val dx = Random.nextFloat() * 0.8f - 0.4f  // -0.4 până la 0.4

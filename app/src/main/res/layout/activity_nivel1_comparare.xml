@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:padding="10dp"
+    android:background="@drawable/background_exercitii"
     tools:context=".Nivel1ComparareActivity">
 
     <LinearLayout
@@ -25,6 +26,7 @@
             android:textSize="28sp"
             android:textColor="#73B48D"
             android:fontFamily="@font/averia_sans_libre"
+            android:textStyle="bold"
             android:layout_marginBottom="100dp"/>
 
         <LinearLayout

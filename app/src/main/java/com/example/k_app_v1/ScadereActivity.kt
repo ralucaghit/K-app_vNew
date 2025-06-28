@@ -25,6 +25,10 @@ class ScadereActivity : AppCompatActivity() {
         val nivel3Button = findViewById<CardView>(R.id.expert_btn)
         val inapoiButton = findViewById<ImageButton>(R.id.backButton)
 
+        nivel1Button.addPressEffect()
+        nivel2Button.addPressEffect()
+        nivel3Button.addPressEffect()
+
         nivel1Button.setOnClickListener{
             val intent = Intent(this, ScadereNivel1Activity::class.java)
             startActivity(intent)

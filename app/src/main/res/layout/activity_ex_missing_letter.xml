@@ -33,8 +33,8 @@
             android:id="@+id/cuvantTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/averia_sans_libre_bold"
             android:text="_vion"
             android:textColor="#73B48D"
@@ -59,7 +59,7 @@
             android:textSize="23sp"
             android:textColor="#73B48D"
             android:fontFamily="@font/andika"
-            android:layout_marginTop="24dp" />
+            android:layout_marginTop="20dp" />
 
     </LinearLayout>
 

@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:padding="10dp"
+    android:background="@drawable/background_exercitii"
     tools:context=".Nivel23ComparareActivity">
 
     <LinearLayout
@@ -23,15 +24,20 @@
             android:layout_height="wrap_content"
             android:text="@string/titlu_comparare23"
             android:fontFamily="@font/averia_sans_libre"
+            android:textStyle="bold"
             android:textSize="32sp"
             android:textColor="#73B48D"
             android:layout_marginBottom="70dp"/>
 
         <LinearLayout
             android:id="@+id/numereContainer"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:padding="5dp"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"
+            android:background="@drawable/rounded_button_short"
             android:gravity="center"
             android:layout_marginBottom="70dp">
 
@@ -42,7 +48,7 @@
                 android:text=""
                 android:fontFamily="@font/averia_sans_libre"
                 android:textSize="50sp"
-                android:textColor="#E91E63"
+                android:textColor="@color/albastru_tema"
                 android:layout_marginEnd="30dp"/>
 
             <TextView
@@ -52,7 +58,7 @@
                 android:text=""
                 android:fontFamily="@font/averia_sans_libre"
                 android:textSize="50sp"
-                android:textColor="#9C27B0"/>
+                android:textColor="@color/portocaliu_tema"/>
 
             <TextView
                 android:id="@+id/numarDreapta"
@@ -61,7 +67,7 @@
                 android:text=""
                 android:fontFamily="@font/averia_sans_libre"
                 android:textSize="50sp"
-                android:textColor="#03A9F4"
+                android:textColor="@color/albastru_tema"
                 android:layout_marginStart="30dp"/>
         </LinearLayout>
 

@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:fillViewport="true"
+    android:background="@drawable/background_exercitii"
     tools:context=".NumarareActivity">
 
         <LinearLayout
@@ -21,9 +22,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Câte obiecte vezi în imagine?"
-                android:textSize="24sp"
+                android:textSize="25sp"
                 android:textColor="#73B48D"
                 android:fontFamily="@font/andika"
+                android:textStyle="bold"
                 android:layout_marginBottom="40dp" />
 
             <ImageView

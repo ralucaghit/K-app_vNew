@@ -8,12 +8,8 @@
     android:fitsSystemWindows="true"
     android:paddingTop="5dp"
     android:orientation="vertical"
+    android:background="@drawable/background_copii_colorat30"
     tools:context=".AllSilabeActivity">
-
-    <com.example.k_app_v1.BubbleView
-        android:id="@+id/bubbleView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
     <ImageButton
         android:id="@+id/backButton"

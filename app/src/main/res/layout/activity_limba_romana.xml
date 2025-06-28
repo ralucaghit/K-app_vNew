@@ -7,13 +7,9 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:paddingTop="5dp"
+    android:background="@drawable/background_ecran_mate_romana"
     android:orientation="vertical"
     tools:context=".LimbaRomanaActivity">
-
-    <com.example.k_app_v1.BubbleView
-        android:id="@+id/bubbleView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
     <ImageButton
         android:id="@+id/backButton"
