@@ -40,5 +40,5 @@ https://github.com/ralucaghit/SmartKids_Aplicatie_de_e-learning_pentru_copii.git
 
 4. Aplicația va fi compilată, instalată și lansată automat pe dispozitiv.
 
-Notă
+**Notă**
 Nu se încarcă în repository fișiere binare compilate (.apk, .dex) sau folderele generate de build (build/).
